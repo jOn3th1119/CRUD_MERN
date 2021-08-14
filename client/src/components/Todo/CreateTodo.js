@@ -1,10 +1,13 @@
 import React from 'react';
 import { TodoForm } from './TodoForm';
+import axios from 'axios';
 
 export const CreateTodo = () => {
   
   const onSubmit = (data => {
-    alert(JSON.stringify(data))
+    axios.post('/api/todo/', data)
+    .then(res => console.log(res.data))
+    .catch((err) => console.log("Error: " + err));
   });
 
   return (
