@@ -1,0 +1,21 @@
+{
+  "name": "crud_mern",
+  "version": "1.0.0",
+  "description": "This is a activity for Web and Mobile Systems",
+  "main": "server.js",
+  "scripts": {
+    "server": "npm start --prefix server",
+    "client": "npm start --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jOn3th19/CRUD_MERN.git"
+  },
+  "author": "Joneth Rudio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jOn3th19/CRUD_MERN/issues"
+  },
+  "homepage": "https://github.com/jOn3th19/CRUD_MERN#readme",
+  "dependencies": {}
+}
