@@ -24,7 +24,6 @@ router.get('/:id', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-  console.log(req.body)
   Todo.findById(req.params.id)
       .then(todo => {
         todo.text = req.body.text;
