@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react'
 
 import { TodoForm } from './TodoForm';
+import axios from 'axios';
+import { useRouteMatch } from 'react-router-dom';
 
 export const EditTodo = () => {
+  const match = useRouteMatch()
   const [todo, setTodo] = useState()
   
   useEffect(() => {
-    setTodo({ text: "foo" })
+    axios.get(`/api/todo/${match.params.id}`)
+      .then(res => { setTodo(res.data) })
+      .catch((err) => console.log("Error: " + err));
   }, [])
 
   const onSubmit = (data) => {
