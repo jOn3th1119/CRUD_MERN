@@ -9,7 +9,7 @@ export const EditTodo = () => {
   const [todo, setTodo] = useState()
   
   useEffect(() => {
-    axios.get(`/api/todo/${match.params.id}`)
+    axios.get('/api/todo/' + match.params.id)
       .then(res => { setTodo(res.data) })
       .catch((err) => console.log("Error: " + err));
   }, [])

@@ -23,4 +23,16 @@ router.get('/:id', (req, res) => {
       .catch((err) => res.status(400).json("Error: " + err));
 })
 
+router.put('/:id', (req, res) => {
+  console.log(req.body)
+  Todo.findById(req.params.id)
+      .then(todo => {
+        todo.text = req.body.text;
+        todo.save()
+          .then(todo => res.json(todo))
+          .catch((err) => res.status(500).json("Error: " + err));
+      })
+      .catch((err) => res.status(400).json("Error: " + err));
+})
+
 module.exports = router;
