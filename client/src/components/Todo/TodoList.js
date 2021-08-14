@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react'
 
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export const TodoList = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    setItems([
-      { text: "foo", id: 0 },
-      { text: "foo2", id: 1 },
-      { text: "foo3", id: 2 },
-    ])
+    axios.get('/api/todo/')
+      .then(res => { setItems(res.data) })
+      .catch((err) => console.log("Error: " + err));
   }, [])
 
   return (
