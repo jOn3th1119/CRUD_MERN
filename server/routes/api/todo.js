@@ -36,7 +36,7 @@ router.put('/:id', (req, res) => {
 
 router.delete("/:id", (req, res) => {
   Todo.findByIdAndDelete(req.params.id)
-    .then(() => res.json("Todo deleted."))
+    .then(todo => { res.json(todo) })
     .catch((err) => res.status(400).json("Error: " + err));
 });
 

@@ -12,6 +12,16 @@ export const TodoList = () => {
       .catch((err) => console.log("Error: " + err));
   }, [])
 
+  const deleteTodo = (e, id) => {
+    e.preventDefault();
+    axios.delete('/api/todo/' + id)
+      .catch((err) => console.log("Error: " + err));
+    
+    axios.get('/api/todo/')
+      .then(res => { setItems(res.data) })
+      .catch((err) => console.log("Error: " + err));
+  }
+
   return (
     <div className="container">
       <div className="mt-3">
@@ -28,7 +38,12 @@ export const TodoList = () => {
               items.map(todo => 
                 <tr key={todo._id}>
                   <td>{todo.text}</td>
-                  <td><Link to={`/edit/${todo._id}`}>Edit</Link></td>
+                  <td>
+                    <Link to={`/edit/${todo._id}`}>
+                      Edit
+                    </Link>
+                    <button type="button" className="mx-3" onClick={(e) => {deleteTodo(e, todo._id)}}>Delete</button>
+                  </td>
                 </tr>  
               )
             }
